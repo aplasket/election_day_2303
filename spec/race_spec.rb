@@ -27,6 +27,9 @@ RSpec.describe Race do
       expect(candidate1.class).to eq(Candidate)
       expect(candidate1.name).to eq("Diana D")
       expect(candidate1.party).to eq(:democrat)
+
+      @race.add_candidates(candidate1)
+      @race.add_candidates(candidate2)
       expect(@race.candidates).to eq([candidate1, candidate2])
     end
   end
