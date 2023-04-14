@@ -21,8 +21,19 @@ RSpec.describe Candidate do
   end
 
   describe "#vote for" do
+    it "returns an integer equal to number of votes" do
+      expect(@diana.vote_for!).to eq(1)
+      expect(@diana.votes).to eq(1)
+    end
+
     it "can count how many votes candidate has" do
-      
+      @diana.vote_for!
+      @diana.vote_for!
+      @diana.vote_for!
+      expect(@diana.votes).to eq(3)
+
+      @diana.vote_for!
+      expect(@diana.votes).to eq(4)
     end
   end
 end
