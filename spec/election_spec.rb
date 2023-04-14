@@ -59,11 +59,11 @@ RSpec.describe Election do
       16.times { @candidate3.vote_for! }
       100.times { @candidate4.vote_for! }
       
-      expect(@election.vote_counts(@race1)).to be_a(Hash)
-      expect(@election.vote_counts(@race1)).to eq({ "Diana D" => 6, 
-                                                    "Roberto R" => 10})
-      expect(@election.vote_counts(@race2)).to eq({ "Bob B" => 16, 
-                                                    "Mickey Mouse" => 100})
+      expect(@election.vote_counts).to be_a(Hash)
+      expect(@election.vote_counts).to eq({ "Diana D" => 6, 
+                                            "Roberto R" => 10,
+                                            "Bob B" => 16, 
+                                            "Mickey Mouse" => 100})
     end
   end
 end
