@@ -33,10 +33,9 @@ RSpec.describe Election do
 
   describe "add candidates" do
     it "can add candidates to candidate array" do
+      @election.add_race(@race1)
       candidate1 = @race1.register_candidate!({name: "Diana D", party: :democrat})
       candidate2 = @race1.register_candidate!({name: "Roberto R", party: :republican})
-      @race1.add_candidates(candidate1)
-      @race1.add_candidates(candidate2)
 
       expect(@election.candidates(@race1)).to eq([candidate1, candidate2])
     end
@@ -44,6 +43,7 @@ RSpec.describe Election do
 
   describe "#vote counts" do
     it "adds candidates name and their vote counts to a hash" do
+      @election.add_race(@race1)
       candidate1 = @race1.register_candidate!({name: "Diana D", party: :democrat})
       candidate2 = @race1.register_candidate!({name: "Roberto R", party: :republican})
       candidate1.vote_for!

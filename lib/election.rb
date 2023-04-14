@@ -16,16 +16,12 @@ class Election
   end
 
   def vote_counts(race)
-    candidate_name = race.candidates.map do |candidate|
-      candidiate.name
-    end
-
-    num_votes = race.candidates.map do |candidate|
-      candidate.votes
-    end
-
     votes = {}
-    votes[candidate_name] = num_votes
+    
+    race.candidates.map do |candidate|
+      votes[candidate.name] = candidate.votes
+    end
+
     votes
   end
 end
