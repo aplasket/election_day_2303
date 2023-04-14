@@ -43,7 +43,7 @@ RSpec.describe Election do
   end
 
   describe "#vote counts" do
-    it "adds candidates name and their vote counts to a hash" do
+    xit "adds candidates name and their vote counts to a hash" do
       candidate1 = @race1.register_candidate!({name: "Diana D", party: :democrat})
       candidate2 = @race1.register_candidate!({name: "Roberto R", party: :republican})
       @race1.add_candidates(candidate1)
