@@ -20,14 +20,14 @@ RSpec.describe Election do
     end
 
     it "starts with an empty array of candidates" do
-      exxpect(@election.candidates(race)).to eq([])
+      expect(@election.candidates(@race1)).to eq([])
     end
   end
 
   describe "#add race" do
     it "can add race objects to race array" do
       expect(@election.add_race(@race1)).to eq([@race1])
-      expect(@election.race).to eq([@race1])
+      expect(@election.races).to eq([@race1])
     end
   end
 
@@ -40,5 +40,21 @@ RSpec.describe Election do
 
       expect(@election.candidates(@race1)).to eq([candidate1, candidate2])
     end
+  end
+
+  describe "#vote counts" do
+    it "adds candidates name and their vote counts to a hash" do
+      candidate1 = @race1.register_candidate!({name: "Diana D", party: :democrat})
+      candidate2 = @race1.register_candidate!({name: "Roberto R", party: :republican})
+      @race1.add_candidates(candidate1)
+      @race1.add_candidates(candidate2)
+      @candidate1.vote_for!
+      @candidate1.vote_for!
+      @candidate2.vote_for!
+      
+      expect(@election.vote_counts(@race1)).to be_a(Hash)
+    end
+
+
   end
 end
