@@ -17,13 +17,16 @@ class Election
     end
   end
 
-  def vote_counts(race)
-    votes = {}
-    
-    race.candidates.map do |candidate|
-      votes[candidate.name] = candidate.votes
-    end
-
-    votes
+  def vote_counts
+    require 'pry'; binding.pry
   end
+  # def vote_counts(race)
+  #   votes = {}
+    
+  #   race.candidates.map do |candidate|
+  #     votes[candidate.name] = candidate.votes
+  #   end
+
+  #   votes
+  # end
 end
