@@ -1,6 +1,6 @@
 class Race
-  attr_reader :office,
-              :candidates
+  attr_reader :office
+  attr_accessor :candidates
 
   def initialize(office)
     @office = office
