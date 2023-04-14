@@ -53,6 +53,7 @@ RSpec.describe Election do
       @candidate2.vote_for!
       
       expect(@election.vote_counts(@race1)).to be_a(Hash)
+      expect(@election.vote_counts(@race1)).to eq({"Diana D" => 2, "Roberto R" => 1})
     end
 
 
