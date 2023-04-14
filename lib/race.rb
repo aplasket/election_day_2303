@@ -9,10 +9,7 @@ class Race
 
   def register_candidate!(info)
     candidate = Candidate.new(info)
-  end
-
-  def add_candidates(candidate)
     @candidates << candidate
+    candidate
   end
-
 end
