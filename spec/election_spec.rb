@@ -17,11 +17,11 @@ RSpec.describe Election do
     end
 
     it "starts with an empty array of races" do
-      expect(@election.candidates(@race1)).to eq([])
+      expect(@election.candidates).to eq([])
     end
 
     it "starts with an empty array of candidates" do
-      expect(@election.candidates(@race1)).to eq([])
+      expect(@election.candidates).to eq([])
     end
   end
 
@@ -34,14 +34,15 @@ RSpec.describe Election do
 
   describe "add candidates" do
     it "can add candidates to candidate array" do
-      @election.add_race(@race1)
-      @election.add_race(@race2)
       @candidate1 = @race1.register_candidate!({name: "Diana D", party: :democrat})
       @candidate2 = @race1.register_candidate!({name: "Roberto R", party: :republican})
       @candidate3 = @race2.register_candidate!({name: "Bob B", party: :green})
       @candidate4 = @race2.register_candidate!({name: "Mickey Mouse", party: :fun})
-      expect(@election.candidates(@race1)).to eq([@candidate1, @candidate2])
-      expect(@election.candidates(@race2)).to eq([@candidate3, @candidate4])
+      expect(@election.candidates).to eq([])
+
+      @election.add_race(@race1)
+      @election.add_race(@race2)
+      expect(@election.candidates).to eq([@candidate1, @candidate2, @candidate3, @candidate4])
     end
   end
 
