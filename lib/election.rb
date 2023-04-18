@@ -17,4 +17,16 @@ class Election
     end
     all_candidates.flatten
   end
+
+  def vote_counts
+    vote_per_candidate= {}
+
+    @races.each do |race|
+      race.candidates.each do |candidate|
+        vote_per_candidate[candidate] = candidate.votes
+      end
+    end
+
+    vote_per_candidate
+  end
 end
