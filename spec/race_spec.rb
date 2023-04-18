@@ -32,7 +32,6 @@ RSpec.describe Race do
 
       candidate2 = @race.register_candidate!({name: "Roberto R", party: :republican})
       expect(@race.candidates).to eq([@candidate1, candidate2])
-
     end
   end
 end
