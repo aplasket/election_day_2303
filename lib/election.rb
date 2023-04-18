@@ -1,34 +1,32 @@
-class Election
+class Election 
   attr_reader :year,
               :races
-
   def initialize(year)
     @year = year
     @races = []
   end
 
-  def add_race(race_info)
-    @races << race_info
+  def add_race(race)
+    @races << race
   end
 
   def candidates
-    @races.flat_map do |race|
-      race.candidates
+    all_candidates = []
+    @races.each do |race|
+      all_candidates << race.candidates
     end
+    all_candidates.flatten
   end
 
   def vote_counts
-    votes = {}
-    
-    candidates.map do |candidate|
-      votes[candidate.name] = candidate.votes
+    vote_per_candidate= {}
+
+    @races.each do |race|
+      race.candidates.each do |candidate|
+        vote_per_candidate[candidate] = candidate.votes
+      end
     end
 
-    votes
-    
-    #alternatively:
-    #candidates.map {|candidate| [candidate.name, candidate.votes]}.to_h
+    vote_per_candidate
   end
-
-
 end
